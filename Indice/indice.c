@@ -74,7 +74,7 @@ int main() {
             Endereco res;
             fread(&res, sizeof(Endereco), 1, f);
 
-            printf("\n--- DADOS ENCONTRADOS ---\n");
+            printf("DADOS ENCONTRADOS\n");
             printf("Rua:    %.72s\n", res.logradouro);
             printf("Cidade: %.72s\n", res.cidade);
             printf("Buscas realizadas: %d\n", count);

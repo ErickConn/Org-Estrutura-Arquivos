@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
             count+1, argv[1], e.cep, meio);
 
         if (cmp == 0) {
-            printf("\n--- Registro Encontrado ---\n");
+            printf("Registro Encontrado\n");
             printf("Rua:    %.72s\n", e.logradouro);
             printf("Bairro: %.72s\n", e.bairro);
             printf("Cidade: %.72s\n", e.cidade);

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 100000
 #define N 8
 
 typedef struct _Endereco Endereco;
@@ -37,10 +36,8 @@ int main(int argc, char *argv[]){
     long tamanho = ftell(a);
     rewind(a);
     long registros = tamanho / sizeof(Endereco);
-    char nome[20];
     int qtb = registros/N;
     int resto = registros % 8;                                                                                                  
-    int qtd = 0;
     ea = (Endereco *) malloc(sizeof(Endereco) * (qtb+1));
 
     for(int i = 0; i < N; i++){
@@ -74,15 +71,11 @@ int main(int argc, char *argv[]){
         fread(&eb, sizeof(Endereco), 1, b);
 
         while(!feof(a) && !feof(b)){
-            if(compara(&ea, &eb) < 0){
+            if(compara(&ea, &eb) <= 0){
                 fwrite(&ea, sizeof(Endereco), 1, saida);
                 fread(&ea, sizeof(Endereco), 1, a);
-            }else if(compara(&ea, &eb) > 0){
+            }else {
                 fwrite(&eb, sizeof(Endereco), 1, saida);
-                fread(&eb, sizeof(Endereco), 1, b);
-            }else{
-                fwrite(&ea, sizeof(Endereco), 1, saida);
-                fread(&ea, sizeof(Endereco), 1, a);
                 fread(&eb, sizeof(Endereco), 1, b);
             }
         }
